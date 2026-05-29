@@ -1,5 +1,5 @@
 import streamlit as st
-from tensorflow.keras.models import model_from_json
+from keras.models import model_from_json
 from PIL import Image, UnidentifiedImageError
 import numpy as np
 import os
@@ -39,7 +39,7 @@ else:
                 st.success(f"La IA creu que és un gos amb un {confidence:.2f}% de confiança.")
             else:
                 confidence = (1 - prob) * 100
-                st.success(f"La IA creu que és un gat amb un {confidence:.2f}% de confiança.")
+                st.success(f"La IA creu que és un gat amb un {(1-prob)*100:.2f}% de confiança.")
             st.info("Recorda: el model és senzill i pot equivocar-se.")
         except UnidentifiedImageError:
             st.error("No s'ha pogut llegir la imatge. Puja un fitxer JPG o PNG vàlid.")
